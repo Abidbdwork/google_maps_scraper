@@ -1,0 +1,3 @@
+# please enter proxy here as list, Each line you can use each ip
+# proxy format should be like this http://{username}:{password}@{host}:{port}
+# Example: http://bnjna:p0gsqijt@p.webshare.io:80
