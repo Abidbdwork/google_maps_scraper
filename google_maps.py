@@ -16,6 +16,7 @@ class google_maps:
         self.output = os.path.join(root, 'output')
         os.makedirs(self.output, exist_ok=True)
         self.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36"
+        self.map_api_key = ''
         self.headers = {
             'accept': '*/*',
             'accept-language': 'en-US,en;q=0.9,bn;q=0.8,de;q=0.7',
@@ -31,7 +32,7 @@ class google_maps:
             'sec-fetch-site': 'cross-site',
             'user-agent': self.user_agent,
             'x-browser-channel': 'stable',
-            'x-goog-api-key': 'AIzaSyA6myHzS10YXdcazAFalmXvDkrYCp5cLc8',
+            'x-goog-api-key': self.map_api_key,
             'x-user-agent': 'grpc-web-javascript/0.1'
         }
         self.column_mapping = {"company_name": "Business name", "phone": "Business phone number", "full_address": "Complete address",
