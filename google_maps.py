@@ -39,8 +39,20 @@ class google_maps:
                                "website": "Website", "city": "City", "state": "State", "map_url": "Source URL"}
         self.all_working_proxies = [i.strip() for i in open("proxies.txt", encoding="utf-8").read().splitlines() if i.strip() and i.strip().startswith("http")]
         # temp input
-        query = input("Please enter your search query: ")
-        self.queries = [query]
+
+        env = dict(os.environ)
+        if env.get('JENKINS_URL'):
+            queries = env.get("Search_queries")
+            if queries:
+                queries = [i.strip() for i in queries.splitlines() if i.strip()]
+                logging.info(f"Total input queries found: {len(queries)}")
+            else:
+                raise Exception("No input queries found")
+        else:
+            # temp use
+            # queries = ["cafe in barishal"]
+            queries = [input("Please enter your search query: ")]
+        self.queries = queries
         self.concurrency = 1
         self.main_records = []
         self.start_process()
