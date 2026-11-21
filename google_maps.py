@@ -15,8 +15,9 @@ class google_maps:
         root = os.path.dirname(__file__)
         self.output = os.path.join(root, 'output')
         os.makedirs(self.output, exist_ok=True)
+        env = dict(os.environ)
+        self.map_api_key = env.get("map_api_key")  # AIzaSyA6my HzS10YXdcaz AFalmXvDkr YCp5cLc8
         self.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36"
-        self.map_api_key = ''
         self.headers = {
             'accept': '*/*',
             'accept-language': 'en-US,en;q=0.9,bn;q=0.8,de;q=0.7',
@@ -40,7 +41,6 @@ class google_maps:
         self.all_working_proxies = [i.strip() for i in open("proxies.txt", encoding="utf-8").read().splitlines() if i.strip() and i.strip().startswith("http")]
         # temp input
 
-        env = dict(os.environ)
         if env.get('JENKINS_URL'):
             queries = env.get("Search_queries")
             if queries:
