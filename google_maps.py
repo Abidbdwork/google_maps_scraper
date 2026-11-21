@@ -39,7 +39,6 @@ class google_maps:
         self.column_mapping = {"company_name": "Business name", "phone": "Business phone number", "full_address": "Complete address",
                                "website": "Website", "city": "City", "state": "State", "map_url": "Source URL"}
         self.all_working_proxies = [i.strip() for i in open("proxies.txt", encoding="utf-8").read().splitlines() if i.strip() and i.strip().startswith("http")]
-        # temp input
 
         if env.get('JENKINS_URL'):
             queries = env.get("Search_queries")
